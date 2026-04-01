@@ -1,10 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Meine erste Webseite</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Hello World</h1>
-</body>
+
+    <hr>
+
+    <h2>Kontaktformular</h2>
+    <form action="https://formspree.io/f/mgopzonz" method="post">
+     <div>
+        <label><strong>Wieso melden Sie sich?</strong></label><br>
+        <input type="radio" id="support" name="Grund" value="Support" checked />
+        <label for="support">Support</label>
+        <input type="radio" id="projekt" name="Grund" value="Projekt" />
+        <label for="projekt">Projekt</label>
+        <input type="radio" id="feedback" name="Grund" value="Feedback" />
+        <label for="feedback">Feedback</label>
+      </div>
+
+      <br>
+
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <br>
+
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <br>
+
+      <div>
+        <label for="nachricht">Deine Nachricht:</label><br>
+        <textarea id="nachricht" name="nachricht" rows="5" cols="33" required placeholder="Schreibe hier deine Nachricht..."></textarea>
+      </div>
+
+      <br>
+
+      <input type="submit" value="Absenden" />
+    </form>
+
+  </body>
 </html>
