@@ -2,27 +2,54 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <title>Interaktiver Lebenslauf</title>
-    <style>
+    <title>Meine erste Webseite</title>
+     <style>
+      .experiment {
+      background-color: lightblue;
+      width: 60em;
+      height: 10em;
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      }
 
-    </style>
+      .experiment-text {
+        background-color: beige;
+        align-self: between;
+        border: 2px solid black;
+        flex: 1;
+        display: flex;
+      }
+      #hello {
+        background-color: lightcoral;
+      }
+      #world {
+        background-color: lightgreen;
+      }
+      #exclamation {
+        background-color: lightyellow;
+        width: fit-content;
+        height: fit-content;
+        flex: 0 0 auto;
+      }
+      #pips {
+        background-color: lightgray;
+      }
+
+  </style>
   </head>
 
   <body>
-    <h1>Interaktiver Lebenslauf</h1>
+    <h1>Hello World</h1>
 
 
-
-
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<div class="experiment"> 
+  <p id="hello" class="experiment-text">hello</p>
+  <p id="world" class="experiment-text">world</p>
+  <p id="exclamation" class="experiment-text">hallo zusammen wir sind am programmieren</p>
+  <p id="pips" class="experiment-text"> pips </p>
+</div>
 
     <hr>
 
@@ -64,4 +91,5 @@
       <input type="submit" value="Absenden" />
     </form>
 
-  </body
+  </body>
+</html>
