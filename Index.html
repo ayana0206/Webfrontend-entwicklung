@@ -3,39 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <title>Interaktiver Lebenslauf</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <style>
-
     </style>
   </head>
 
   <body>
     <h1>Interaktiver Lebenslauf</h1>
 
+ <hr style="margin: 40px 0;">
 
-
-
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <hr>
-
+  <div class="container">
     <h2>Kontaktformular</h2>
     <form action="https://formspree.io/f/mgopzonz" method="post">
-     <div>
+   <div>
         <label><strong>Wieso melden Sie sich?</strong></label><br>
-        <input type="radio" id="support" name="Grund" value="Support" checked />
-        <label for="support">Support</label>
-        <input type="radio" id="projekt" name="Grund" value="Projekt" />
-        <label for="projekt">Projekt</label>
-        <input type="radio" id="feedback" name="Grund" value="Feedback" />
-        <label for="feedback">Feedback</label>
+        <input type="radio" name="Grund" value="Support" checked> Support
+        <input type="radio" name="Grund" value="Projekt"> Projekt
+        <input type="radio" name="Grund" value="Feedback"> Feedback
       </div>
 
       <br>
@@ -53,6 +38,18 @@
       </div>
 
       <br>
+      
+      <div>
+        <label>PLZ:</label>
+        <input type="text" id="plz" name="plz" oninput="sucheOrt()">
+      </div>
+
+      <br>
+
+      <div>
+        <label>Ort:</label>
+        <select id="ort" name="ort" oninput="suchePLZ()"></select>
+      </div>
 
       <div>
         <label for="nachricht">Deine Nachricht:</label><br>
@@ -63,5 +60,8 @@
 
       <input type="submit" value="Absenden" />
     </form>
+  </div>
+
+  <script src="plz_ort.js"></script>
 
   </body
