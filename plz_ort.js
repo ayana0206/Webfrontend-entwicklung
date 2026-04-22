@@ -1,36 +1,44 @@
 import './style.scss';
 
+let timeout;
+
 async function sucheOrt() {
-  const plz = document.getElementById("plz").value;
-  const ortSelect = document.getElementById("ort");
+  clearTimeout(timeout);
 
-  ortSelect.innerHTML = "";
+  timeout = setTimeout(async () => {
+    const plz = document.getElementById("plz").value;
+    const ortSelect = document.getElementById("ort");
 
-  if (plz.length < 4) return;
+    ortSelect.innerHTML = "";
 
-  try {
-    const response = await fetch(
-      "https://openplzapi.org/ch/Localities?postalCode=" + plz
-    );
-    const data = await response.json();
+    if (plz.length < 4) return;
 
-    if (data.length === 0) {
+    try {
+      const response = await fetch(
+        `https://openplzapi.org/ch/Localities?postalCode=${plz}`
+      );
+      const data = await response.json();
+
+      if (data.length === 0) {
+        const option = document.createElement("option");
+        option.textContent = "nicht gefunden";
+        ortSelect.appendChild(option);
+        return;
+      }
+
+      data.forEach((eintrag) => {
+        const option = document.createElement("option");
+        option.value = eintrag.name;
+        option.textContent = `${eintrag.name} (${eintrag.canton.shortName})`;
+        ortSelect.appendChild(option);
+      });
+
+    } catch (error) {
       const option = document.createElement("option");
-      option.textContent = "nicht gefunden";
+      option.textContent = "Fehler";
       ortSelect.appendChild(option);
-      return;
     }
-
-    data.forEach((eintrag) => {
-      const option = document.createElement("option");
-      option.value = eintrag.name;
-      option.textContent = eintrag.name + " (" + eintrag.canton.shortName + ")";
-      ortSelect.appendChild(option);
-    });
-
-  } catch (error) {
-    const option = document.createElement("option");
-    option.textContent = "Fehler";
-    ortSelect.appendChild(option);
-  }
+  }, 300);
 }
+
+window.sucheOrt = sucheOrt;

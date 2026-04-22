@@ -1,67 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Interaktiver Lebenslauf</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-    <style>
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Interaktiver Lebenslauf</title>
+</head>
+<body>
 
-  <body>
-    <h1>Interaktiver Lebenslauf</h1>
-
- <hr style="margin: 40px 0;">
-
-  <div class="container">
-    <h2>Kontaktformular</h2>
-    <form action="https://formspree.io/f/mgopzonz" method="post">
-   <div>
-        <label><strong>Wieso melden Sie sich?</strong></label><br>
-        <input type="radio" name="Grund" value="Support" checked> Support
-        <input type="radio" name="Grund" value="Projekt"> Projekt
-        <input type="radio" name="Grund" value="Feedback"> Feedback
+  <section class="hero is-primary is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Interaktiver Lebenslauf</h1>
       </div>
+    </div>
+  </section>
 
-      <br>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-two-thirds">
+          
+          <div class="box">
+            <h2 class="title is-4">Kontaktformular</h2>
+            <form action="https://formspree.io/f/mgopzonz" method="post">
+              
+              <div class="field">
+                <label class="label">Wieso melden Sie sich?</label>
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" name="Grund" value="Support" checked> Support
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="Grund" value="Projekt"> Projekt
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="Grund" value="Feedback"> Feedback
+                  </label>
+                </div>
+              </div>
 
-      <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
+              <div class="columns">
+                <div class="column">
+                  <div class="field">
+                    <label class="label" for="name">Name</label>
+                    <div class="control">
+                      <input class="input" type="text" id="name" name="name" placeholder="Dein Name" required />
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label" for="email">Email</label>
+                    <div class="control">
+                      <input class="input" type="email" id="email" name="email" placeholder="beispiel@mail.de" required />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="columns">
+                <div class="column is-one-third">
+                  <div class="field">
+                    <label class="label">PLZ</label>
+                    <div class="control">
+                      <input class="input" type="text" id="plz" name="plz" placeholder="z.B. 9000" oninput="sucheOrt()">
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="field">
+                    <label class="label">Ort</label>
+                    <div class="control">
+                      <div class="select is-fullwidth">
+                        <select id="ort" name="ort"></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label" for="nachricht">Deine Nachricht</label>
+                <div class="control">
+                  <textarea class="textarea" id="nachricht" name="nachricht" rows="5" required placeholder="Schreibe hier deine Nachricht..."></textarea>
+                </div>
+              </div>
+
+              <div class="field mt-5">
+                <div class="control">
+                  <button type="submit" class="button is-primary is-fullwidth"><strong>Absenden</strong></button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
       </div>
+    </div>
+  </section>
 
-      <br>
-
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-
-      <br>
-      
-      <div>
-        <label>PLZ:</label>
-        <input type="text" id="plz" name="plz" oninput="sucheOrt()">
-      </div>
-
-      <br>
-
-      <div>
-        <label>Ort:</label>
-        <select id="ort" name="ort" oninput="suchePLZ()"></select>
-      </div>
-
-      <div>
-        <label for="nachricht">Deine Nachricht:</label><br>
-        <textarea id="nachricht" name="nachricht" rows="5" cols="33" required placeholder="Schreibe hier deine Nachricht..."></textarea>
-      </div>
-
-      <br>
-
-      <input type="submit" value="Absenden" />
-    </form>
-  </div>
-
-  <script src="plz_ort.js"></script>
-
-  </body
+  <script type="module" src="plz_ort.js"></script>
+</body>
+</html>
