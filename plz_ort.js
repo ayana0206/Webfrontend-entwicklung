@@ -2,6 +2,13 @@ import './style.scss';
 
 let timeout;
 
+// Event sauber registrieren (nur einmal!)
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("plz")
+    .addEventListener("input", sucheOrt);
+});
+
 async function sucheOrt() {
   clearTimeout(timeout);
 
@@ -15,7 +22,7 @@ async function sucheOrt() {
 
     try {
       const response = await fetch(
-        `https://openplzapi.org/ch/Localities?postalCode=${plz}`
+        "https://openplzapi.org/ch/Localities?postalCode=" + plz
       );
       const data = await response.json();
 
@@ -40,5 +47,3 @@ async function sucheOrt() {
     }
   }, 300);
 }
-
-window.sucheOrt = sucheOrt;
