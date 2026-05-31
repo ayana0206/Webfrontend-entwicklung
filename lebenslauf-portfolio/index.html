@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mein Lebenslauf - Ayana Schwizer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h1 id="profile-name">Ayana Schwizer</h1>
+
+        <div class="profile">
+          <nav aria-label="Hauptnavigation">
+            <ul>
+              <li><a href="#about">Über mich</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#education">Bildung</a></li>
+              <li><a href="#experience">Erfahrung</a></li>
+              <li><a href="#contact">Kontakt</a></li>
+            </ul>
+          </nav>
+
+          <div class="profile-info">
+            <p>Musterstraße 123, 12345 Musterstadt</p>
+            <p>0123 456789</p>
+            <p>ayana.schwizer@example.com</p>
+          </div>
+
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/ayana-schwizer" aria-label="LinkedIn Profil" target="_blank">LinkedIn @ayanaschwizer</a>
+            <a href="https://github.com/ayanaschwizer" aria-label="GitHub Profil" target="_blank">GitHub @ayanaschwizer</a>
+          </div>
+
+          <div class="Job-Title">
+            <h2>Softwareentwicklerin</h2>
+          </div>
+
+          <div class="profile-picture">
+            <img src="images/ayana.jpg" alt="Profilbild von Ayana Schwizer" />
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section id="about">
+          <h2>Über mich</h2>
+          <p>Ich bin eine motivierte Softwareentwicklerin im Digital Talents Programm. Ich liebe es, kreative Lösungen für komplexe Probleme zu finden und moderne Web-Frontends zu gestalten.</p>
+        </section>
+
+        <section id="skills">
+          <h2>Fähigkeiten</h2>
+          <div class="skills">
+            <span class="skill">Logisches Denken</span>
+            <span class="skill">Gute Auffassungsgabe</span>
+            <span class="skill">Räumliches Vorstellungsvermögen</span>
+            <span class="skill">Schnelles Einarbeiten</span>
+            <span class="skill">Selbstständiges Arbeiten</span>
+            <span class="skill">Kreative Ideen</span>
+            <span class="skill">Teamfähigkeit</span>
+          </div>
+
+          <div class="languages">
+            <h3>Sprachen</h3>
+            <div class="lang">
+              <span>Deutsch</span>
+              <span>Muttersprache</span>
+            </div>
+            <div class="lang">
+              <span>Englisch</span>
+              <span>Schulkenntnisse (11 Jahre), Sprachaufenthalt (3 Wochen)</span>
+            </div>
+            <div class="lang">
+              <span>Französisch</span>
+              <span>Schulkenntnisse (9 Jahre)</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="education">
+          <h2>Schulbildung</h2>
+          <div class="edu-item">
+            <span class="edu-title">Primarschule</span>
+            <span class="edu-year">2014 – 2020</span>
+          </div>
+          <div class="edu-item">
+            <span class="edu-title">Sekundarschule</span>
+            <span class="edu-year">2020 – 2023</span>
+          </div>
+          <div class="edu-item">
+            <span class="edu-title">Kantonsschule</span>
+            <span class="edu-year">2023 – 2024</span>
+          </div>
+          <div class="edu-item">
+            <span class="edu-title">Digital Talents Programm</span>
+            <span class="edu-year">2024</span>
+          </div>
+        </section>
+
+        <section id="experience">
+          <h2>Erfahrung</h2>
+          <div class="edu-item">
+            <span class="edu-title">Erste Webprojekte (HTML/CSS/JS)</span>
+            <span class="edu-year">2024</span>
+          </div>
+          <p>Entwicklung von responsiven Webseiten und interaktiven Applikationen im Rahmen der Ausbildung.</p>
+        </section>
+
+        <section id="contact">
+          <h2>Kontakt</h2>
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" required placeholder="Dein Name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">E-Mail *</label>
+              <input type="email" id="email" required placeholder="deine.email@beispiel.ch">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="plz">PLZ (CH/DE) *</label>
+                <input type="text" id="plz" required placeholder="z.B. 9000" maxlength="5">
+              </div>
+              <div class="form-group">
+                <label for="city">Wohnort (Auto-Fill)</label>
+                <input type="text" id="city" readonly placeholder="Wird automatisch geladen...">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Nachricht *</label>
+              <textarea id="message" required rows="4" placeholder="Deine Nachricht an mich..."></textarea>
+            </div>
+
+            <button type="submit">Nachricht senden</button>
+          </form>
+          <div id="form-feedback" class="feedback-message" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
