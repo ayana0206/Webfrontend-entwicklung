@@ -1,77 +1,76 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const plzInput = document.getElementById("plz");
-  const cityInput = document.getElementById("city");
-  const contactForm = document.getElementById("contact-form");
-  const feedbackDiv = document.getElementById("form-feedback");
+const plzInput = document.getElementById("plz");
+const cityInput = document.getElementById("city");
+const citySelect = document.getElementById("city-select");
 
-  // --- AUTOCOMPLETION VIA OPENPLZAPI ---
-  plzInput.addEventListener("input", async (e) => {
-    const plz = e.target.value.trim();
+let results = [];
 
-    // Die API reagiert optimal bei 4 (CH) oder 5 (DE) Ziffern
-    if (plz.length >= 4 && plz.length <= 5) {
-      try {
-        // Wir suchen primär nach Schweizer Orten (da gbs St. Gallen), 
-        // du kannst die URL anpassen bei Bedarf (z.B. /de/ oder /ch/)
-        const response = await fetch(`https://www.openplzapi.org/ch/localities?postalCode=${plz}`);
-        
-        if (response.ok) {
-          const data = await response.json();
-          
-          if (data && data.length > 0) {
-            // Nimm den ersten gefundenen Eintrag und trage den Namen ein
-            cityInput.value = data[0].name;
-          } else {
-            cityInput.value = "PLZ nicht gefunden";
-          }
-        }
-      } catch (error) {
-        console.error("Fehler beim Laden der API:", error);
-        cityInput.value = "Fehler beim Laden";
-      }
-    } else {
-      cityInput.value = ""; // Feld leeren, wenn die PLZ unvollständig ist
-    }
-  });
+plzInput.addEventListener("input", async () => {
+  const plz = plzInput.value.trim();
 
-  // --- KONTAKTFORMULAR VALIDIERUNG & INTERAKTIVITÄT ---
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Verhindert das Neuladen der Seite
+  citySelect.innerHTML = "";
+  citySelect.style.display = "none";
 
-    // Input-Felder holen
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-    const city = cityInput.value.trim();
+  if (plz.length < 2) return;
 
-    // Feedback zurücksetzen
-    feedbackDiv.className = "feedback-message";
-    feedbackDiv.style.display = "none";
+  try {
+    const res = await fetch(
+      `https://openplzapi.org/ch/Localities?postalCode=${encodeURIComponent(plz)}`
+    );
 
-    // Validierung prüfen
-    if (!name || !email || !message || !plzInput.value) {
-      feedbackDiv.textContent = "Bitte füllen Sie alle Pflichtfelder (*) aus.";
-      feedbackDiv.classList.add("error");
+    const data = await res.json();
+
+    console.log("API DATA:", data);
+
+    if (!Array.isArray(data) || data.length === 0) {
+      cityInput.value = "";
       return;
     }
 
-    if (!validateEmail(email)) {
-      feedbackDiv.textContent = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
-      feedbackDiv.classList.add("error");
-      return;
-    }
+    results = data;
 
-    // Wenn alles passt: Erfolg melden!
-    feedbackDiv.textContent = `Vielen Dank, ${name}! Deine Nachricht wurde erfolgreich simuliert gesendet. Wohnort: ${city || 'Unbekannt'}.`;
-    feedbackDiv.classList.add("success");
+    citySelect.style.display = "block";
 
-    // Formular zurücksetzen
-    contactForm.reset();
-  });
+    data.forEach((item, i) => {
+      const option = document.createElement("option");
+      option.value = i;
+      option.textContent = `${item.name} (${item.postalCode})`;
+      citySelect.appendChild(option);
+    });
 
-  // Einfache Regex-Funktion zur E-Mail-Validierung
-  function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+    cityInput.value = data[0].name;
+
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+citySelect.addEventListener("change", () => {
+  const selected = results[Number(citySelect.value)];
+
+  console.log("SELECTED:", selected);
+
+  if (!selected) return;
+
+  cityInput.value = selected.name;
+  plzInput.value = selected.postalCode; // 🔥 WICHTIG: camelCase
+});
+
+cityInput.addEventListener("blur", async () => {
+  const city = cityInput.value.trim();
+
+  if (!city) return;
+
+  try {
+    const res = await fetch(
+      `https://openplzapi.org/ch/Localities?name=${encodeURIComponent(city)}`
+    );
+
+    const data = await res.json();
+
+    if (!Array.isArray(data) || data.length === 0) return;
+
+    plzInput.value = data[0].postalCode;
+  } catch (err) {
+    console.error(err);
   }
 });

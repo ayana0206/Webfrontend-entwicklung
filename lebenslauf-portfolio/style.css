@@ -9,10 +9,9 @@ body {
   display: grid;
   grid-template-columns: minmax(320px, 1fr) 2fr;
   min-height: 100vh;
-  overflow: hidden; /* Verhindert, dass die gesamte Seite als Ganzes scrollt */
+  overflow: hidden;
 }
 
-/* Sidebar (Links) */
 .sidebar {
   background: linear-gradient(180deg, #dc8ef4, #1c1c1c);
   color: white;
@@ -20,8 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 30px;
-
-  height: 100vh; 
+  height: 100vh;
   box-sizing: border-box;
   position: sticky;
   top: 0;
@@ -61,7 +59,8 @@ nav ul li a {
   padding: 4px 0;
 }
 
-nav ul li a:hover, nav ul li a:focus {
+nav ul li a:hover,
+nav ul li a:focus {
   color: #dc8ef4;
   outline: none;
   text-decoration: underline;
@@ -73,26 +72,43 @@ nav ul li a:hover, nav ul li a:focus {
   color: #eee;
 }
 
-.social-links a {
-  display: block;
-  margin-top: 10px;
-  color: #ddd;
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
   text-decoration: none;
-  font-size: 14px;
+  transition: all 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.social-links a:hover, .social-links a:focus {
+.social-btn:hover {
+  transform: translateY(-2px);
+  background-color: #dc8ef4;
+  border-color: #fff;
+  color: #fff;
+}
+a {
   color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ddd;
   text-decoration: underline;
 }
 
 .profile-picture {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%; /* Rundes Profilbild sieht oft professioneller aus */
+  width: 100%;
   overflow: hidden;
-  border: 3px solid white;
-  margin-top: 20px;
+  margin-top: auto;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-picture img {
@@ -101,12 +117,6 @@ nav ul li a:hover, nav ul li a:focus {
   object-fit: cover;
 }
 
-
-
-
-
-
-/* Content (Rechts) */
 .content {
   padding: 40px;
   display: flex;
@@ -114,7 +124,7 @@ nav ul li a:hover, nav ul li a:focus {
   gap: 25px;
 
   height: 100vh;
-  overflow-y: auto; 
+  overflow-y: auto;
   box-sizing: border-box;
 }
 
@@ -142,6 +152,61 @@ nav ul li a:hover, nav ul li a:focus {
   padding-bottom: 4px;
 }
 
+.about-lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.about-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.about-list li::before {
+  content: "•";
+  position: absolute;
+  left: 5px;
+  top: 0;
+  color: #dc8ef4;
+}
+
+/* Hobbys Textblock */
+.about-hobbies {
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.about-hobbies-intro {
+  margin-bottom: 12px;
+}
+
+.hobby-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.hobby-tag {
+  background-color: #f0f2f5;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #e4e6eb;
+}
+
 /* Skills & Sprachen */
 .skills {
   display: flex;
@@ -159,48 +224,59 @@ nav ul li a:hover, nav ul li a:focus {
   transition: background-color 0.2s;
 }
 
-.skill:hover {
+.skill:hover,
+.hobby-tag:hover {
   background-color: #dc8ef4;
   color: white;
 }
 
-/* Bestehende Styles erweitern (Klassen einfach mit Komma anhängen) */
-.lang, .edu-item, .exp-item, .project-card {
+.lang,
+.edu-item,
+.exp-item,
+.project-card {
   display: flex;
   flex-direction: column;
-  gap: 8px; 
-  padding: 16px 0; /* Leicht mehr Platz für bessere Lesbarkeit */
+  gap: 8px;
+  padding: 16px 0;
   border-bottom: 1px solid #eee;
 }
 
-.lang:last-child, .edu-item:last-child, .exp-item:last-child, .project-card:last-child {
+.lang:last-child,
+.edu-item:last-child,
+.exp-item:last-child,
+.project-card:last-child {
   border-bottom: none;
 }
 
-.edu-header, .exp-header {
+.edu-header,
+.exp-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-.lang-title, .edu-title, .exp-title {
+.lang-title,
+.edu-title,
+.exp-title {
   font-weight: 600;
   color: #1c1c1c;
 }
 
-.edu-year, .exp-date {
+.edu-year,
+.exp-date {
   color: #666;
   font-size: 14px;
 }
 
-.lang-experience, .edu-description, .exp-description {
+.lang-experience,
+.edu-description,
+.exp-description {
   font-size: 14px;
   color: #555;
   line-height: 1.5;
 }
 
-/* --- NEU: Spezielles Styling für deine Projekte --- */
 .project-card {
   background-color: #fafbfc;
   padding: 15px;
@@ -209,7 +285,6 @@ nav ul li a:hover, nav ul li a:focus {
   margin-bottom: 12px;
 }
 
-/* Kleine feine Badges für die verwendeten Technologien */
 .project-tags {
   display: flex;
   gap: 6px;
@@ -217,7 +292,7 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .project-tags .tag {
-  background-color: #e0ceff; /* Passend zu deinem lila Verlauf */
+  background-color: #e0ceff;
   color: #5b21b6;
   font-size: 11px;
   font-weight: bold;
@@ -226,18 +301,16 @@ nav ul li a:hover, nav ul li a:focus {
   text-transform: uppercase;
 }
 
-/* Formular-Styles */
-#contact-form {
+#contact form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 15px;
+  gap: 18px; 
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px; 
 }
 
 .form-row {
@@ -251,7 +324,8 @@ label {
   font-size: 14px;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -259,7 +333,8 @@ input, textarea {
   font-family: inherit;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: 2px solid #dc8ef4;
 }
 
@@ -285,46 +360,23 @@ button[type="submit"]:hover {
   background-color: #dc8ef4;
 }
 
-/* Feedback-Meldungen */
-.feedback-message {
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 6px;
-  font-weight: bold;
-  display: none;
-}
 
-.feedback-message.success {
-  display: block;
-  background-color: #e6f4ea;
-  color: #137333;
-  border: 1px solid #dadce0;
-}
-
-.feedback-message.error {
-  display: block;
-  background-color: #fce8e6;
-  color: #c5221f;
-  border: 1px solid #dadce0;
-}
-
-/* --- RESPONSIVITÄT (FÜR HANDYS) --- */
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
-    height: auto; /* Hebt die feste Höhe auf Mobilgeräten auf */
-    overflow: visible; /* Erlaubt normales Scrollen auf dem Handy */
+    height: auto; 
+    overflow: visible; 
   }
 
   .sidebar {
-    height: auto; /* Sidebar wird auf dem Handy so hoch wie ihr Inhalt */
-    position: relative; /* Hebt das "Sticky"-Verhalten auf */
+    height: auto; 
+    position: relative; 
     padding: 30px 20px;
   }
 
   .content {
-    height: auto; /* Content wird auf dem Handy so hoch wie ihr Inhalt */
-    overflow-y: visible; /* Kein eigener Scrollbalken mehr nötig */
+    height: auto; 
+    overflow-y: visible; 
     padding: 20px;
   }
-} 
+}
