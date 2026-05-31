@@ -133,6 +133,15 @@ nav ul li a:hover, nav ul li a:focus {
   color: #1c1c1c;
 }
 
+.content section h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 18px;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 4px;
+}
+
 /* Skills & Sprachen */
 .skills {
   display: flex;
@@ -155,25 +164,66 @@ nav ul li a:hover, nav ul li a:focus {
   color: white;
 }
 
-.lang, .edu-item {
+/* Bestehende Styles erweitern (Klassen einfach mit Komma anhängen) */
+.lang, .edu-item, .exp-item, .project-card {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
+  flex-direction: column;
+  gap: 8px; 
+  padding: 16px 0; /* Leicht mehr Platz für bessere Lesbarkeit */
   border-bottom: 1px solid #eee;
 }
 
-.lang:last-child, .edu-item:last-child {
+.lang:last-child, .edu-item:last-child, .exp-item:last-child, .project-card:last-child {
   border-bottom: none;
 }
 
-.lang span:first-child, .edu-title {
-  font-weight: 600;
+.edu-header, .exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.edu-year {
+.lang-title, .edu-title, .exp-title {
+  font-weight: 600;
+  color: #1c1c1c;
+}
+
+.edu-year, .exp-date {
   color: #666;
   font-size: 14px;
+}
+
+.lang-experience, .edu-description, .exp-description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* --- NEU: Spezielles Styling für deine Projekte --- */
+.project-card {
+  background-color: #fafbfc;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #eef0f2;
+  margin-bottom: 12px;
+}
+
+/* Kleine feine Badges für die verwendeten Technologien */
+.project-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.project-tags .tag {
+  background-color: #e0ceff; /* Passend zu deinem lila Verlauf */
+  color: #5b21b6;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
 }
 
 /* Formular-Styles */
