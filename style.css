@@ -37,6 +37,15 @@ body {
   font-weight: 300;
   color: #f0c6ff;
 }
+.sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: #ddd;
+  text-decoration: underline;
+}
 
 /* Navigation */
 nav ul {
@@ -92,15 +101,7 @@ nav ul li a:focus {
   border-color: #fff;
   color: #fff;
 }
-a {
-  color: white;
-  text-decoration: none;
-}
 
-a:hover {
-  color: #ddd;
-  text-decoration: underline;
-}
 
 .profile-picture {
   width: 100%;
@@ -150,6 +151,9 @@ a:hover {
   font-size: 18px;
   border-bottom: 1px dashed #ddd;
   padding-bottom: 4px;
+}
+.content a {
+  color: #dc8ef4;
 }
 
 .about-lead {
